@@ -24,15 +24,20 @@ public class Review implements Serializable{
 	@JoinColumn(name = "user_id")
 	private User user;
 	
+	@ManyToOne
+	@JoinColumn(name = "movie_id")
+	private Movie movie;
+	
 	public Review() {
 		
 	}
 
-	public Review(Long id, String text, User user) {
+	public Review(Long id, String text, User user, Movie movie) {
 		super();
 		this.id = id;
 		this.text = text;
 		this.user = user;
+		this.movie = movie;
 	}
 
 	public Long getId() {
@@ -57,6 +62,14 @@ public class Review implements Serializable{
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public Movie getMovie() {
+		return movie;
+	}
+
+	public void setMovie(Movie movie) {
+		this.movie = movie;
 	}
 
 	@Override
